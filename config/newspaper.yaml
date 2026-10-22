@@ -1,0 +1,107 @@
+# 报纸邮件（newspaper digest）配置模板
+# 群号怎么查：见 docs/napcat-setup.md「怎么拿到群号」
+# 全部群号/课程名都换成你自己群的即可；不用的段落可以整段删掉。
+
+# 只处理这个时间点之后的消息
+start_at: "2026-01-01T00:00:00+08:00"
+
+notice:
+  # 通知报发送时间（24 小时制）
+  hours: [8, 12, 18]
+  max_items: 80
+  classify_batch_size: 12
+  # 群图片：原图发 Telegram 文件频道；AI 只做“试读”，不参与标题/摘要/紧急判定
+  image_text:
+    mode: preview          # off | preview | live
+    models:
+      - glm-4.1v-thinking-flash
+      - glm-4v-flash
+    max_per_tick: 2
+    max_chars: 700
+    tg_originals: true
+    tg_max_per_tick: 6
+
+  # 第一类：整群都是课程消息（每条都进通知报）
+  course_groups:
+    "123456790": "课程A"
+    "123456791": "课程B"
+
+  # 只有出现课程消息时才进第一类（活动类默认不计）
+  course_hint_groups:
+    "123456792": "活动群"
+
+  # 第二类：每个成员都必须看的群
+  mandatory_groups:
+    "123456793": "学院通知群"
+    "123456794": "班级群"
+
+  # 这些群只在 owner/admin 发言时采集
+  role_filter_groups:
+    "123456793": ["owner", "admin"]
+
+  # 图片直接转发到邮箱、不做文字分类的群
+  image_forward_groups:
+    "123456795":
+      name: "图片消息群"
+      max_images: 9
+      max_bytes: 10485760
+
+tech:
+  hour: 18
+  max_wait_hours: 24
+  max_messages: 400
+  # 技术群：技术发言进技术报
+  groups:
+    "123456796": "技术交流群"
+  # 只收指定 QQ 的技术发言，并在报里单独开一栏
+  special_groups:
+    "123456797":
+      name: "技术群B"
+      user_id: "123456798"
+      column_title: "技术群B · 专栏"
+  # 粗筛技术味；最终由 opencode 去梗去闲聊
+  keywords:
+    - AI
+    - LLM
+    - 大模型
+    - 推理
+    - 训练
+    - 微调
+    - 部署
+    - 显存
+    - GPU
+    - API
+    - prompt
+    - agent
+    - opencode
+    - deepseek
+    - github
+    - 开源
+    - 代码
+    - 编程
+    - Python
+    - 配置
+    - 安装
+    - 报错
+    - bug
+    - 教程
+    - 工具
+    - 插件
+    - 工作流
+    - MCP
+    - RAG
+    - 向量
+    - 论文
+    - 算法
+    - 服务器
+    - docker
+    - git
+    - 命令行
+    - 脚本
+
+# 技术报由 `opencode run` 生成，这里指定 agent 名和模型
+# 模型要写你自己 opencode 里配置过的 provider/model，例如 "deepseek/deepseek-chat"
+opencode:
+  agent: "info-hub-research"
+  model: "provider/model"
+  timeout_seconds: 600

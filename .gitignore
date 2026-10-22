@@ -1,0 +1,13 @@
+.env
+*.log
+data/
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+config/group_names.json
+.sync-secrets.json
+*.zip
+*.bak
+*.bak-*
+docs/review-baseline/

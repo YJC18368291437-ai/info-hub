@@ -1,0 +1,12 @@
+{
+  "_comment": "把此对象加入 D:\\napcat-toolkit\\napcat\\config\\onebot11_1000000000.json 的 network.websocketClients 数组，作为第二个 WS 客户端（G26）。改完需重启 NapCat。本服务端口见 .env 的 PORT（默认 8082）。",
+  "name": "info-hub",
+  "enable": true,
+  "url": "ws://127.0.0.1:8082/onebot/v11/ws",
+  "messagePostFormat": "array",
+  "reportSelfMessage": false,
+  "token": "",
+  "debug": false,
+  "reconnectInterval": 5000,
+  "heartInterval": 30000
+}

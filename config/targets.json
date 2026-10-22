@@ -1,0 +1,34 @@
+{
+  "notice": {
+    "chat": -1000000000002,
+    "thread": null
+  },
+  "memo": {
+    "chat": -1000000000003,
+    "thread": null
+  },
+  "at_me": {
+    "chat": -1000000000001,
+    "thread": null
+  },
+  "cs": {
+    "chat": -1000000000005,
+    "thread": 5
+  },
+  "chat": {
+    "chat": -1000000000005,
+    "thread": 6
+  },
+  "bio": {
+    "chat": -1000000000005,
+    "thread": 7
+  },
+  "link": {
+    "chat": -1000000000003,
+    "thread": null
+  },
+  "file": {
+    "chat": -1000000000004,
+    "thread": null
+  }
+}

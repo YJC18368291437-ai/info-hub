@@ -1,0 +1,10 @@
+﻿{
+    "at_me":  3,
+    "notice":  4,
+    "chat":  5,
+    "memo":  6,
+    "cs":  7,
+    "bio":  8,
+    "link":  9,
+    "file":  10
+}
